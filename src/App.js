@@ -4,6 +4,7 @@ import Container from './components/Container/Container';
 import NotFoundView from './pages/NotFoundView/NotFoundView';
 import MoviesView from './pages/MoviesView/MoviesView';
 import HomeView from './pages/HomeView/HomeView';
+import MovieDetailsView from './pages/MovieDetailsView/MovieDetailsView';
 
 export default function App() {
   return (
@@ -15,8 +16,12 @@ export default function App() {
           <HomeView />
         </Route>
 
-        <Route path="/movies">
+        <Route path="/movies" exact>
           <MoviesView />
+        </Route>
+
+        <Route path="/movies/:movieId">
+          <MovieDetailsView />
         </Route>
 
         <Route>
