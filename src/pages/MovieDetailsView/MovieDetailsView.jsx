@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Route, useParams, NavLink, useRouteMatch } from 'react-router-dom';
 import * as API from '../../service/api_movie';
 import defaultImg from '../../images/defaul_img.png';
+import CastView from '../../pages/CastView/CastView';
+import Reviews from '../../pages/Reviews/Reviews';
+import styles from './MovieDetails.module.css';
 
 export default function MovieDetailsView() {
+  const { url, path } = useRouteMatch();
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
 
@@ -26,6 +30,8 @@ export default function MovieDetailsView() {
               alt={movie.original_title}
             />
           )}
+          <h3>User Score:</h3>
+          <span>{movie.vote_average * 10}%</span>
           <h3>Overview</h3>
           <p>{movie.overview}</p>
           <h3>Genres</h3>
@@ -36,6 +42,34 @@ export default function MovieDetailsView() {
               ))}
             </ul>
           )}
+          <hr />
+
+          <nav>
+            <NavLink
+              to={`${url}/cast`}
+              className={styles.link}
+              activeClassName={styles.activeLink}
+            >
+              Cast
+            </NavLink>
+            <NavLink
+              to={`${url}/reviews`}
+              className={styles.link}
+              activeClassName={styles.activeLink}
+            >
+              Reviews
+            </NavLink>
+          </nav>
+
+          <hr />
+
+          <Route exact path={`${path}/cast`}>
+            <CastView movieId={movieId} />
+          </Route>
+
+          <Route exact path={`${path}/reviews`}>
+            <Reviews movieId={movieId} />
+          </Route>
         </>
       )}
     </>
