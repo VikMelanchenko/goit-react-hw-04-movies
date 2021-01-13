@@ -3,7 +3,7 @@ import styles from './Appbar.module.css';
 
 export default function Appbar() {
   return (
-    <header className={styles.header}>
+    <header className={styles.Searchbar}>
       <Navigation />
     </header>
   );
