@@ -1,10 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Route, useParams, NavLink, useRouteMatch } from 'react-router-dom';
 import * as API from '../../service/api_movie';
 import defaultImg from '../../images/defaul_img.png';
-import CastView from '../../pages/CastView/CastView';
-import Reviews from '../../pages/Reviews/Reviews';
+
 import styles from './MovieDetails.module.css';
+
+const CastView = lazy(() =>
+  import(`../CastView/CastView` /* webpackChunkName: "cast-subview"*/)
+);
+const Reviews = lazy(() =>
+  import(`../ReviewsView/Reviews` /* webpackChunkName: "cast-subview"*/)
+);
 
 export default function MovieDetailsView() {
   const { url, path } = useRouteMatch();
@@ -63,13 +69,15 @@ export default function MovieDetailsView() {
 
           <hr />
 
-          <Route exact path={`${path}/cast`}>
-            <CastView movieId={movieId} />
-          </Route>
+          <Suspense>
+            <Route exact path={`${path}/cast`}>
+              <CastView movieId={movieId} />
+            </Route>
 
-          <Route exact path={`${path}/reviews`}>
-            <Reviews movieId={movieId} />
-          </Route>
+            <Route exact path={`${path}/reviews`}>
+              <Reviews movieId={movieId} />
+            </Route>
+          </Suspense>
         </>
       )}
     </>

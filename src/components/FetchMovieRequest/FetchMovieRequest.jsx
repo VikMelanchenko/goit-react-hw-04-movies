@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch, useHistory, useLocation } from 'react-router-dom';
 import { fetchSearchMovie } from '../../service/api_movie';
 import defaultImg from '../../images/defaul_img.png';
 
@@ -8,6 +8,8 @@ import styles from '../../pages/HomeView/HomeView.module.css';
 export default function FetchMovieRequest({ query }) {
   const [movies, setMovies] = useState([]);
   const { url } = useRouteMatch();
+  const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     if (!query) {

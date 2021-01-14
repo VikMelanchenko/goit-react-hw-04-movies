@@ -19,7 +19,7 @@ li {
 
 img {
   width: 100%;
-  height: 270px;
+  height: 185px;
 }
 
 img {
@@ -60,15 +60,12 @@ img {
 .movie_card img {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  height: 30rem;
+  height: 28rem;
 }
 
 .card_title {
   font-size: 20px;
   font-style: bold;
-  width: 90%;
-  height: 4rem;
-  padding: 10px;
   color: black;
 }
 

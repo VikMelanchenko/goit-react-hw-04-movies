@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 // import PropTypes from 'prop-types';
-// import '../css/styles.css';
+import styles from './SearchBar.module.css';
 
 export default function SearchBar({ onSubmit }) {
   const [query, setQuery] = useState('');
@@ -23,8 +23,9 @@ export default function SearchBar({ onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.Searchbar}>
       <input
+        className={styles.inputbox}
         type="text"
         autoComplete="off"
         autoFocus
