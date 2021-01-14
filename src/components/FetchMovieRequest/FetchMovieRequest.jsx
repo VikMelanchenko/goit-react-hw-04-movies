@@ -8,8 +8,6 @@ import styles from '../../pages/HomeView/HomeView.module.css';
 export default function FetchMovieRequest({ query }) {
   const [movies, setMovies] = useState([]);
   const { url } = useRouteMatch();
-  const history = useHistory();
-  const location = useLocation();
 
   useEffect(() => {
     if (!query) {

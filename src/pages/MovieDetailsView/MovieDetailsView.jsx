@@ -1,5 +1,12 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { Route, useParams, NavLink, useRouteMatch } from 'react-router-dom';
+import {
+  Route,
+  useParams,
+  NavLink,
+  useRouteMatch,
+  useLocation,
+  useHistory,
+} from 'react-router-dom';
 import * as API from '../../service/api_movie';
 import defaultImg from '../../images/defaul_img.png';
 
@@ -13,6 +20,8 @@ const Reviews = lazy(() =>
 );
 
 export default function MovieDetailsView() {
+  const location = useLocation();
+  const history = useHistory();
   const { url, path } = useRouteMatch();
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
@@ -21,8 +30,18 @@ export default function MovieDetailsView() {
     API.fetchMovieById(movieId).then(setMovie);
   }, [movieId]);
 
+  const onGoBack = () => {
+    history.push(location?.state?.from?.location ?? '/');
+    console.log(location.state);
+  };
+
   return (
     <>
+      <button type="button" onClick={onGoBack}>
+        Back
+      </button>
+
+      <hr />
       <h2>{movie.title}</h2>
       {movie && (
         <>

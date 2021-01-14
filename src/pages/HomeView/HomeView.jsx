@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch, useLocation } from 'react-router-dom';
 import * as API from '../../service/api_movie';
 import defaultImg from '../../images/defaul_img.png';
 
 import styles from './HomeView.module.css';
 
 export default function HomeView() {
+  const location = useLocation();
   const { url } = useRouteMatch();
   const [movies, setMovies] = useState([]);
 
@@ -30,7 +31,10 @@ export default function HomeView() {
               <div className={styles.card_body}>
                 <Link
                   style={{ textDecoration: 'none' }}
-                  to={`${url}movies/${movie.id}`}
+                  to={{
+                    pathname: `${url}movies/${movie.id}`,
+                    state: { from: { location, label: 'back to home-page' } },
+                  }}
                 >
                   <h5 className={styles.card_title}>{movie.title}</h5>
                 </Link>
