@@ -1,27 +1,49 @@
 import { useState, useEffect } from 'react';
 import { fetchMovieReviews } from '../../service/api_movie';
+import ReviewsList from '../../components/ReviewsList/ReviewsList';
+
+import Spinner from '../../components/Loader/Loader';
+
+const Status = {
+  IDLE: 'idle',
+  PENDING: 'pending',
+  RESOLVED: 'resolved',
+  REJECTED: 'rejected',
+};
 
 export default function Reviews({ movieId }) {
   const [reviews, setReviews] = useState([]);
+  const [status, setStatus] = useState(Status.IDLE);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchMovieReviews(movieId).then((request) => setReviews(request.results));
+    setStatus(Status.PENDING);
+    getReviews();
+    setStatus(Status.RESOLVED);
   }, [movieId]);
 
-  return (
-    <>
-      {reviews.length > 0 ? (
-        <ul>
-          {reviews.map((review) => (
-            <li key={review.id}>
-              <h3>Author: {review.author}</h3>
-              <p>"{review.content}"</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>There are no reviews for this movie.</p>
-      )}
-    </>
-  );
+  const getReviews = () => {
+    fetchMovieReviews(movieId)
+      .then((request) => setReviews(request.results))
+      .catch((error) => {
+        setError(error);
+        setStatus(Status.REJECTED);
+      });
+  };
+
+  if (status === Status.IDLE) {
+    return <ReviewsList />;
+  }
+
+  if (status === Status.PENDING) {
+    return <Spinner />;
+  }
+
+  if (status === Status.REJECTED) {
+    return <div>{error.message}</div>;
+  }
+
+  if (status === Status.RESOLVED) {
+    return <ReviewsList reviews={reviews} />;
+  }
 }

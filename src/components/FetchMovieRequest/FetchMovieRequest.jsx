@@ -1,49 +1,63 @@
 import { useState, useEffect } from 'react';
-import { Link, useRouteMatch, useHistory, useLocation } from 'react-router-dom';
 import { fetchSearchMovie } from '../../service/api_movie';
-import defaultImg from '../../images/defaul_img.png';
+import Spinner from '../Loader/Loader';
+import MovieCard from '../MovieCard/MovieCard';
+import PropTypes from 'prop-types';
 
-import styles from '../../pages/HomeView/HomeView.module.css';
+const Status = {
+  IDLE: 'idle',
+  PENDING: 'pending',
+  RESOLVED: 'resolved',
+  REJECTED: 'rejected',
+};
 
 export default function FetchMovieRequest({ query }) {
   const [movies, setMovies] = useState([]);
-  const { url } = useRouteMatch();
+  const [status, setStatus] = useState(Status.IDLE);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!query) {
       return;
     }
-    fetchSearchMovie(query).then(({ results }) => {
-      setMovies(results);
-    });
+
+    setStatus(Status.PENDING);
+    fetchMovies();
+    setStatus(Status.RESOLVED);
   }, [query]);
 
-  return (
-    <>
-      {movies && (
-        <ul className={styles.MovieList}>
-          {movies.map((movie, id) => (
-            <li key={movie.id} id={id} className={styles.movie_card}>
-              <img
-                src={
-                  movie.poster_path
-                    ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                    : defaultImg
-                }
-                alt={movie.original_name}
-              />
-              <div className={styles.card_body}>
-                <Link
-                  to={`${url}/${movie.id}`}
-                  style={{ textDecoration: 'none' }}
-                >
-                  <h5 className={styles.card_title}>{movie.title}</h5>
-                </Link>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
-  );
+  const fetchMovies = () => {
+    fetchSearchMovie(query)
+      .then(({ results }) => {
+        setMovies(results);
+      })
+      .catch((error) => {
+        setError(error);
+        setStatus(Status.REJECTED);
+      });
+  };
+
+  if (status === Status.IDLE) {
+    return (
+      <div style={{ textAlign: 'left' }}>
+        Please enter a search term to begin your search...
+      </div>
+    );
+  }
+
+  if (status === Status.PENDING) {
+    return <Spinner />;
+  }
+
+  if (status === Status.REJECTED) {
+    return <div>{error.message}</div>;
+  }
+
+  if (status === Status.RESOLVED) {
+    return <>{movies && <MovieCard movies={movies} />}</>;
+  }
 }
+
+FetchMovieRequest.propTypes = {
+  query: PropTypes.string,
+};

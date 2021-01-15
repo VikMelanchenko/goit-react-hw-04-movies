@@ -1,48 +1,83 @@
 import { useState, useEffect } from 'react';
+import { fetchTrendingMovies } from '../../service/api_movie';
+import FetchMovieRequest from '../../components/FetchMovieRequest/FetchMovieRequest';
+import Spinner from '../../components/Loader/Loader';
 import { Link, useRouteMatch, useLocation } from 'react-router-dom';
-import * as API from '../../service/api_movie';
+
 import defaultImg from '../../images/defaul_img.png';
 
-import styles from './HomeView.module.css';
+const Status = {
+  IDLE: 'idle',
+  PENDING: 'pending',
+  RESOLVED: 'resolved',
+  REJECTED: 'rejected',
+};
 
 export default function HomeView() {
+  const [movies, setMovies] = useState([]);
+  const [status, setStatus] = useState(Status.IDLE);
+  const [error, setError] = useState(null);
   const location = useLocation();
   const { url } = useRouteMatch();
-  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    API.fetchTrendingMovies().then((request) => setMovies(request.results));
+    setStatus(Status.PENDING);
+    fetchTrends();
+    setStatus(Status.RESOLVED);
   }, []);
 
-  return (
-    <>
-      {movies && (
-        <ul className={styles.MovieList}>
-          {movies.map((movie) => (
-            <li key={movie.id} className={styles.movie_card}>
-              <img
-                src={
-                  movie.poster_path
-                    ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                    : defaultImg
-                }
-                alt={movie.original_name}
-              />
-              <div className={styles.card_body}>
-                <Link
-                  style={{ textDecoration: 'none' }}
-                  to={{
-                    pathname: `${url}movies/${movie.id}`,
-                    state: { from: { location, label: 'back to home-page' } },
-                  }}
-                >
-                  <h5 className={styles.card_title}>{movie.title}</h5>
-                </Link>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
-  );
+  const fetchTrends = () => {
+    fetchTrendingMovies()
+      .then((request) => setMovies(request.results))
+      .catch((error) => {
+        setError(error);
+        setStatus(Status.REJECTED);
+      });
+  };
+
+  if (status === Status.IDLE) {
+    return <FetchMovieRequest />;
+  }
+
+  if (status === Status.PENDING) {
+    return <Spinner />;
+  }
+
+  if (status === Status.REJECTED) {
+    return <div>{error.message}</div>;
+  }
+
+  if (status === Status.RESOLVED) {
+    return (
+      <>
+        {movies && (
+          <ul>
+            {movies.map((movie) => (
+              <li key={movie.id}>
+                <img
+                  src={
+                    movie.poster_path
+                      ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                      : defaultImg
+                  }
+                  alt={movie.original_name}
+                />
+                <div>
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    to={{
+                      pathname: `${url}movies/${movie.id}`,
+                      state: { from: { location, label: 'back to home-page' } },
+                    }}
+                  >
+                    <h5>{movie.title}</h5>
+                  </Link>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </>
+    );
+  }
 }
