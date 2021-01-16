@@ -4,6 +4,8 @@ import FetchMovieRequest from '../../components/FetchMovieRequest/FetchMovieRequ
 import Spinner from '../../components/Loader/Loader';
 import { Link, useRouteMatch, useLocation } from 'react-router-dom';
 
+import styles from '../../css/styles.module.css';
+
 import defaultImg from '../../images/defaul_img.png';
 
 const Status = {
@@ -51,10 +53,11 @@ export default function HomeView() {
     return (
       <>
         {movies && (
-          <ul>
+          <ul className={styles.cards_wrap}>
             {movies.map((movie) => (
-              <li key={movie.id}>
+              <li key={movie.id} className={styles.card_box}>
                 <img
+                  className={styles.card_poster}
                   src={
                     movie.poster_path
                       ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`

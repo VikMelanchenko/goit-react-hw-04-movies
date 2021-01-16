@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
+import styles from '../../css/styles.module.css';
+
 export default function SearchBar({ onSubmit }) {
   const [query, setQuery] = useState('');
 
@@ -22,15 +24,16 @@ export default function SearchBar({ onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.search_form}>
       <input
+        className={styles.search_form_input}
         type="text"
         autoComplete="off"
         autoFocus
         value={query}
         onChange={handleChange}
       />
-      <button type="submit">Search</button>
+      <button className={styles.search_form_button} type="submit"></button>
     </form>
   );
 }

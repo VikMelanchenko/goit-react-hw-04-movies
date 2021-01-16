@@ -9,10 +9,11 @@ export default function MovieCard({ movies }) {
   const { url } = useRouteMatch();
 
   return (
-    <ul className={styles.MovieList}>
+    <ul className={styles.cards_wrap}>
       {movies.map((movie) => (
-        <li key={movie.id} className={styles.movie_card}>
+        <li key={movie.id} className={styles.card_box}>
           <img
+            className={styles.card_poster}
             src={
               movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`

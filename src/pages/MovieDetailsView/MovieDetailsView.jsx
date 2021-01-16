@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import * as API from '../../service/api_movie';
 import defaultImg from '../../images/defaul_img.png';
-import styles from '../../components/Navigation/Navigation.module.css';
+import styles from '../../css/styles.module.css';
 
 const CastView = lazy(() =>
   import(`../CastView/CastView` /* webpackChunkName: "cast-subview"*/)
@@ -36,17 +36,15 @@ export default function MovieDetailsView() {
   return (
     <>
       <hr />
-      <button type="button" onClick={onGoBack}>
-        Back
+      <button type="button" onClick={onGoBack} className={styles.button_back}>
+        Go Back
       </button>
-
-      <hr />
 
       {movie && (
         <>
           <div className={styles.card_wrap}>
             {movie.poster_path && (
-              <div>
+              <div className={styles.card_left}>
                 <img
                   src={
                     movie.poster_path
@@ -57,7 +55,7 @@ export default function MovieDetailsView() {
                 />
               </div>
             )}
-            <div>
+            <div className={styles.card_right}>
               <h2>{movie.title}</h2>
               <h3>User Score:</h3>
               <span>{movie.vote_average * 10}%</span>
@@ -72,6 +70,8 @@ export default function MovieDetailsView() {
                 </ul>
               )}
             </div>
+
+            <hr />
 
             <nav>
               <NavLink

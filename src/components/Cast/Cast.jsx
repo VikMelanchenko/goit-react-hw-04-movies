@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
-import defaultImg from '../../images/defaul_img.png';
+import defaultImg from '../../images/defaulltIcon.jpg';
+
+import styles from '../../css/styles.module.css';
 
 export default function Cast({ characters }) {
   return (
     <>
       {characters && (
-        <ul>
+        <ul className={styles.cards_wrap}>
           {characters.map((character) => (
-            <li key={character.id}>
+            <li key={character.id} className={styles.card_box_item}>
               {character.profile_path && (
                 <img
                   src={
