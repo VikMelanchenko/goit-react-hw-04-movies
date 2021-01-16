@@ -25,5 +25,10 @@ export default function ReviewsList({ reviews }) {
 }
 
 ReviewsList.propTypes = {
-  reviews: PropTypes.array,
+  fields: PropTypes.arrayOf(
+    PropTypes.shape({
+      review: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+    }).isRequired
+  ),
 };

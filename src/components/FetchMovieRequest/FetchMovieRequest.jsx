@@ -59,5 +59,5 @@ export default function FetchMovieRequest({ query }) {
 }
 
 FetchMovieRequest.propTypes = {
-  query: PropTypes.string,
+  query: PropTypes.string.isRequired,
 };

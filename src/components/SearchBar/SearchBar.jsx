@@ -33,7 +33,9 @@ export default function SearchBar({ onSubmit }) {
         value={query}
         onChange={handleChange}
       />
-      <button className={styles.search_form_button} type="submit"></button>
+      <button className={styles.search_form_button} type="submit">
+        Search
+      </button>
     </form>
   );
 }
