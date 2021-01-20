@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
 import defaultImg from '../../images/defaul_img.png';
 
-import { Link, useLocation, useRouteMatch } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import styles from '../../css/styles.module.css';
 
 export default function MovieCard({ movies }) {
-  const { url } = useRouteMatch();
   const location = useLocation();
 
   return (

@@ -25,7 +25,7 @@ export default function MovieDetailsView() {
   const location = useLocation();
   console.log('MovieDetailsView: ', location);
   const history = useHistory();
-  const { url, path } = useRouteMatch();
+  const { path } = useRouteMatch();
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
 
@@ -90,7 +90,6 @@ export default function MovieDetailsView() {
                   },
                 }}
                 className={styles.link}
-                activeClassName={styles.activeLink}
               >
                 Cast
               </Link>
@@ -102,7 +101,6 @@ export default function MovieDetailsView() {
                   },
                 }}
                 className={styles.link}
-                activeClassName={styles.activeLink}
               >
                 Reviews
               </Link>
