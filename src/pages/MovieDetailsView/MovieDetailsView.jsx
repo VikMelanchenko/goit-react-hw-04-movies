@@ -11,11 +11,13 @@ import * as API from '../../service/api_movie';
 import defaultImg from '../../images/defaul_img.png';
 import styles from '../../css/styles.module.css';
 
-const CastView = lazy(() =>
-  import(`../CastView/CastView` /* webpackChunkName: "cast-subview"*/)
+const Cast = lazy(() =>
+  import(`../../components/Cast/Cast` /* webpackChunkName: "cast-subview"*/)
 );
 const Reviews = lazy(() =>
-  import(`../ReviewsView/Reviews` /* webpackChunkName: "cast-subview"*/)
+  import(
+    `../../components/Reviews/Reviews` /* webpackChunkName: "cast-subview"*/
+  )
 );
 
 export default function MovieDetailsView() {
@@ -92,7 +94,7 @@ export default function MovieDetailsView() {
 
             <Suspense>
               <Route exact path={`${path}/cast`}>
-                <CastView movieId={movieId} />
+                <Cast movieId={movieId} />
               </Route>
 
               <Route exact path={`${path}/reviews`}>

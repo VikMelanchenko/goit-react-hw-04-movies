@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { fetchMovieReviews } from '../../service/api_movie';
-import ReviewsList from '../../components/ReviewsList/ReviewsList';
+import ReviewsList from '../ReviewsList/ReviewsList';
 
-import Spinner from '../../components/Loader/Loader';
+import Spinner from '../Loader/Loader';
 
 const Status = {
   IDLE: 'idle',

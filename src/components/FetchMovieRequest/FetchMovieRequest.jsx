@@ -30,6 +30,9 @@ export default function FetchMovieRequest({ query }) {
     fetchSearchMovie(query)
       .then(({ results }) => {
         setMovies(results);
+        if (!results.length) {
+          throw new Error('Hmm...Nothing here. Try another search.');
+        }
       })
       .catch((error) => {
         setError(error);
