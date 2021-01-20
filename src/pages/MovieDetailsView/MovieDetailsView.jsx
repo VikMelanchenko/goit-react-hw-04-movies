@@ -2,10 +2,11 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import {
   Route,
   useParams,
-  NavLink,
+  Link,
   useRouteMatch,
   useLocation,
   useHistory,
+  Switch,
 } from 'react-router-dom';
 import * as API from '../../service/api_movie';
 import defaultImg from '../../images/defaul_img.png';
@@ -22,6 +23,7 @@ const Reviews = lazy(() =>
 
 export default function MovieDetailsView() {
   const location = useLocation();
+  console.log('MovieDetailsView: ', location);
   const history = useHistory();
   const { url, path } = useRouteMatch();
   const { movieId } = useParams();
@@ -32,14 +34,18 @@ export default function MovieDetailsView() {
   }, [movieId]);
 
   const onGoBack = () => {
-    history.push(location?.state?.from?.location ?? '/');
+    if (location && location.state && location.state.from) {
+      history.push(location.state.from);
+      return;
+    }
+    history.push('/');
   };
 
   return (
     <>
       <hr />
       <button type="button" onClick={onGoBack} className={styles.button_back}>
-        Go Back
+        {location?.state?.from?.label ?? 'Go Back'}
       </button>
 
       {movie && (
@@ -76,36 +82,42 @@ export default function MovieDetailsView() {
             <hr />
 
             <nav>
-              <NavLink
+              <Link
                 to={{
-                  pathname: `${url}/cast`,
-                  state: { from: location },
+                  pathname: `/movies/${movieId}/cast`,
+                  state: {
+                    from: location,
+                  },
                 }}
                 className={styles.link}
                 activeClassName={styles.activeLink}
               >
                 Cast
-              </NavLink>
-              <NavLink
+              </Link>
+              <Link
                 to={{
-                  pathname: `${url}/reviews`,
-                  state: { from: location },
+                  pathname: `/movies/${movieId}/reviews`,
+                  state: {
+                    from: location,
+                  },
                 }}
                 className={styles.link}
                 activeClassName={styles.activeLink}
               >
                 Reviews
-              </NavLink>
+              </Link>
             </nav>
 
             <Suspense>
-              <Route exact path={`${path}/cast`}>
-                <Cast movieId={movieId} />
-              </Route>
+              <Switch>
+                <Route exact path={`${path}/cast`}>
+                  <Cast movieId={movieId} />
+                </Route>
 
-              <Route exact path={`${path}/reviews`}>
-                <Reviews movieId={movieId} />
-              </Route>
+                <Route exact path={`${path}/reviews`}>
+                  <Reviews movieId={movieId} />
+                </Route>
+              </Switch>
             </Suspense>
           </div>
         </>

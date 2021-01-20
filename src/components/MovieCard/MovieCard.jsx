@@ -25,8 +25,8 @@ export default function MovieCard({ movies }) {
           <div className={styles.card_body}>
             <Link
               to={{
-                pathname: `${url}/${movie.id}`,
-                state: { from: { location, label: 'back to movies-page' } },
+                pathname: `/movies/${movie.id}`,
+                state: { from: location },
               }}
               style={{ textDecoration: 'none' }}
             >

@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar/AppBar';
 import Container from './components/Container/Container';
 // закомментированы статические импорты
