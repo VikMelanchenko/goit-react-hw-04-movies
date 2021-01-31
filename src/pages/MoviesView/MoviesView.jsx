@@ -1,5 +1,5 @@
 import SearchBar from '../../components/SearchBar/SearchBar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import { ToastContainer } from 'react-toastify';
@@ -11,7 +11,10 @@ export default function MoviesView() {
   const location = useLocation();
   const [query, setQuery] = useState('');
 
-  const searchQuery = new URLSearchParams(location.search).get('query') ?? '';
+  useEffect(() => {
+    const searchQuery = new URLSearchParams(location.search).get('query') ?? '';
+    setQuery(searchQuery, query);
+  }, [location.search, query]);
 
   const handleFormSubmit = (query) => {
     setQuery(query);
@@ -25,7 +28,7 @@ export default function MoviesView() {
     <>
       <SearchBar onSubmit={handleFormSubmit} />
       <ToastContainer autoClose={3000} />
-      <FetchMovieRequest query={searchQuery} />
+      <FetchMovieRequest query={query} />
     </>
   );
 }

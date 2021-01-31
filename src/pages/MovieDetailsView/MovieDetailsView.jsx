@@ -85,7 +85,7 @@ export default function MovieDetailsView() {
               <NavLink
                 to={{
                   pathname: `${url}/cast`,
-                  state: { from: location },
+                  state: { from: location.state ? location.state.from : '/' },
                 }}
                 className={styles.link}
                 activeClassName={styles.activeLink}
@@ -95,7 +95,7 @@ export default function MovieDetailsView() {
               <NavLink
                 to={{
                   pathname: `${url}/reviews`,
-                  state: { from: location },
+                  state: { from: location.state ? location.state.from : '/' },
                 }}
                 className={styles.link}
                 activeClassName={styles.activeLink}
