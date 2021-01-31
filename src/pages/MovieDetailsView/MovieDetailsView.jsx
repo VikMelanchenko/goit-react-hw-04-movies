@@ -2,7 +2,7 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import {
   Route,
   useParams,
-  Link,
+  NavLink,
   useRouteMatch,
   useLocation,
   useHistory,
@@ -23,9 +23,8 @@ const Reviews = lazy(() =>
 
 export default function MovieDetailsView() {
   const location = useLocation();
-  console.log('MovieDetailsView: ', location);
   const history = useHistory();
-  const { path } = useRouteMatch();
+  const { path, url } = useRouteMatch();
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
 
@@ -34,18 +33,19 @@ export default function MovieDetailsView() {
   }, [movieId]);
 
   const onGoBack = () => {
-    if (location && location.state && location.state.from) {
-      history.push(location.state.from);
-      return;
-    }
-    history.push('/');
+    history.push(location?.state?.from?.location ?? '/');
+    // if (location && location.state && location.state.from) {
+    //   history.push(location.state.from);
+    //   return;
+    // }
+    // history.push('/');
   };
 
   return (
     <>
       <hr />
       <button type="button" onClick={onGoBack} className={styles.button_back}>
-        {location?.state?.from?.label ?? 'Go Back'}
+        Go Back
       </button>
 
       {movie && (
@@ -82,28 +82,26 @@ export default function MovieDetailsView() {
             <hr />
 
             <nav>
-              <Link
+              <NavLink
                 to={{
-                  pathname: `/movies/${movieId}/cast`,
-                  state: {
-                    from: location,
-                  },
+                  pathname: `${url}/cast`,
+                  state: { from: location },
                 }}
                 className={styles.link}
+                activeClassName={styles.activeLink}
               >
                 Cast
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 to={{
-                  pathname: `/movies/${movieId}/reviews`,
-                  state: {
-                    from: location,
-                  },
+                  pathname: `${url}/reviews`,
+                  state: { from: location },
                 }}
                 className={styles.link}
+                activeClassName={styles.activeLink}
               >
                 Reviews
-              </Link>
+              </NavLink>
             </nav>
 
             <Suspense>

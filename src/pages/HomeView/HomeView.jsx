@@ -70,7 +70,7 @@ export default function HomeView() {
                     style={{ textDecoration: 'none' }}
                     to={{
                       pathname: `${url}movies/${movie.id}`,
-                      state: { from: location },
+                      state: { from: { location, label: 'back to home-page' } },
                     }}
                   >
                     <h5>{movie.title}</h5>

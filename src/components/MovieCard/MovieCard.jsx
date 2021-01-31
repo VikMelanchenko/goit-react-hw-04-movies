@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import defaultImg from '../../images/defaul_img.png';
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useRouteMatch } from 'react-router-dom';
 
 import styles from '../../css/styles.module.css';
 
 export default function MovieCard({ movies }) {
+  const { url } = useRouteMatch();
   const location = useLocation();
 
   return (
@@ -24,8 +25,10 @@ export default function MovieCard({ movies }) {
           <div className={styles.card_body}>
             <Link
               to={{
-                pathname: `/movies/${movie.id}`,
-                state: { from: location },
+                pathname: `${url}/${movie.id}`,
+                state: {
+                  from: { location, label: 'back to movies-page' },
+                },
               }}
               style={{ textDecoration: 'none' }}
             >
