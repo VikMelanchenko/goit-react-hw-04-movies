@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { fetchSearchMovie } from '../../service/api_movie';
 import Spinner from '../Loader/Loader';
 import MovieCard from '../MovieCard/MovieCard';
-import PropTypes from 'prop-types';
 
 const Status = {
   IDLE: 'idle',
@@ -60,7 +59,3 @@ export default function FetchMovieRequest({ query }) {
     return <>{movies && <MovieCard movies={movies} />}</>;
   }
 }
-
-FetchMovieRequest.propTypes = {
-  query: PropTypes.string.isRequired,
-};

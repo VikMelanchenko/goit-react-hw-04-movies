@@ -52,34 +52,38 @@ export default function HomeView() {
   if (status === Status.RESOLVED) {
     return (
       <>
-        {movies && (
-          <ul className={styles.cards_wrap}>
-            {movies.map((movie) => (
-              <li key={movie.id} className={styles.card_box}>
-                <img
-                  className={styles.card_poster}
-                  src={
-                    movie.poster_path
-                      ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                      : defaultImg
-                  }
-                  alt={movie.original_name}
-                />
-                <div>
-                  <Link
-                    style={{ textDecoration: 'none' }}
-                    to={{
-                      pathname: `${url}movies/${movie.id}`,
-                      state: { from: { location, label: 'back to home-page' } },
-                    }}
-                  >
-                    <h5>{movie.title}</h5>
-                  </Link>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+        <div className={styles.container}>
+          {movies && (
+            <ul className={styles.cards_wrap}>
+              {movies.map((movie) => (
+                <li key={movie.id} className={styles.card_box}>
+                  <img
+                    className={styles.card_poster}
+                    src={
+                      movie.poster_path
+                        ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                        : defaultImg
+                    }
+                    alt={movie.original_name}
+                  />
+                  <div>
+                    <Link
+                      style={{ textDecoration: 'none' }}
+                      to={{
+                        pathname: `${url}movies/${movie.id}`,
+                        state: {
+                          from: { location, label: 'back to home-page' },
+                        },
+                      }}
+                    >
+                      <h5>{movie.title}</h5>
+                    </Link>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </>
     );
   }

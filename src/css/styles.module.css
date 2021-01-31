@@ -1,18 +1,22 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background: #fff;
+  background-color: white;
 }
 
 ul {
   list-style: none;
 }
 
+.container {
+  flex-grow: 1;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
 /* Home and Movies pages */
 .cards_wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
@@ -296,6 +300,7 @@ ul {
   left: 0;
   position: sticky;
   z-index: 1100;
+  width: 100%;
   display: flex;
   justify-content: left;
   align-items: left;
@@ -358,4 +363,80 @@ ul {
   border: 1 solid rgb(15, 8, 8);
   outline: none;
   padding: 7px;
+}
+
+/* SCREEN MOBILE________________________________ */
+@media screen and (min-width: 320px) {
+  .Searchbar {
+    min-width: 320px;
+  }
+
+  .search_form {
+    width: auto;
+  }
+
+  .container {
+    width: 320px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .card_left {
+    width: 100%;
+  }
+
+  .card_right {
+    width: 100%;
+  }
+
+  .button_back {
+    padding: 5px 5px 5px 20px;
+    margin-bottom: 10px;
+  }
+}
+
+/* SCREEN TABLET */
+@media screen and (min-width: 760px) {
+  .Searchbar {
+    min-width: 760px;
+  }
+
+  .search_form {
+    width: auto;
+  }
+
+  .container {
+    width: 760px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .card_left {
+    width: 100%;
+  }
+
+  .card_right {
+    width: 100%;
+  }
+}
+
+/* SCREEN TABLET */
+@media screen and (min-width: 1024px) {
+  .Searchbar {
+    min-width: 1024px;
+  }
+
+  .container {
+    width: 1024px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .card_left {
+    width: 40%;
+  }
+
+  .card_right {
+    width: 60%;
+  }
 }
