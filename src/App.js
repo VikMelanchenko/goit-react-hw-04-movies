@@ -3,11 +3,6 @@ import { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar/AppBar';
 import Container from './components/Container/Container';
-// закомментированы статические импорты
-// import NotFoundView from './pages/NotFoundView/NotFoundView';
-// import MoviesView from './pages/MoviesView/MoviesView';
-// import HomeView from './pages/HomeView/HomeView';
-// import MovieDetailsView from './pages/MovieDetailsView/MovieDetailsView';
 
 // Разделение кода /динамические страницы/
 const HomeView = lazy(() =>
