@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Toggle from '../Toggle/Toggle';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from '../../theme.js';
