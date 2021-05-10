@@ -7,8 +7,8 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  header: '#000000',
-  body: '#000000',
+  header: '#2c2c2c',
+  body: '#2c2c2c',
   text: '#FFF',
   toggleBorder: '#6B8096',
   gradient: 'linear-gradient(#393d42, #aaadad)',

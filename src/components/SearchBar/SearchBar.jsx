@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
-import styles from '../../css/styles.module.css';
+import styles from './search.module.css';
 
 export default function SearchBar({ onSubmit }) {
   const [query, setQuery] = useState('');
