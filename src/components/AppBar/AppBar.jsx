@@ -6,7 +6,9 @@ export default function Appbar() {
   return (
     <header className={styles.Searchbar}>
       <Navigation />
-      <ThemeSwither />
+      <div>
+        <ThemeSwither />
+      </div>
     </header>
   );
 }

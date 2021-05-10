@@ -57,16 +57,21 @@ export default function HomeView() {
             <ul className={styles.cards_wrap}>
               {movies.map((movie) => (
                 <li key={movie.id} className={styles.card_box}>
-                  <img
-                    className={styles.card_poster}
-                    src={
-                      movie.poster_path
-                        ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                        : defaultImg
-                    }
-                    alt={movie.original_name}
-                  />
-                  <div>
+                  <div className={styles.card_thumb}>
+                    <img
+                      className={styles.card_poster}
+                      src={
+                        movie.poster_path
+                          ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                          : defaultImg
+                      }
+                      alt={movie.original_name}
+                    />
+                    <div className={styles.card_overlay}>
+                      <p></p>
+                    </div>
+                  </div>
+                  <div className={styles.card_content}>
                     <Link
                       style={{ textDecoration: 'none' }}
                       to={{
@@ -76,7 +81,7 @@ export default function HomeView() {
                         },
                       }}
                     >
-                      <h5>{movie.title}</h5>
+                      <h5 className={styles.card_title}>{movie.title}</h5>
                     </Link>
                   </div>
                 </li>

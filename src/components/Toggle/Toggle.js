@@ -8,8 +8,8 @@ import { ReactComponent as SunIcon } from '../../icons/sun-1.svg';
 const ToggleContainer = styled.button`
   display: block;
   background: ${({ theme }) => theme.gradient};
-  width: 8rem;
-  height: 3.5rem;
+  width: 5rem;
+  height: 2.5rem;
   margin: 0 auto;
   border-radius: 30px;
   border: 2px solid ${({ theme }) => theme.toggleBorder};
@@ -19,7 +19,7 @@ const ToggleContainer = styled.button`
   cursor: pointer;
 
   svg {
-    width: 2.5rem;
+    width: 1.5rem;
     height: auto;
     transition: all 0.3s linear;
     &:first-child {
