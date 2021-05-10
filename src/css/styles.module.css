@@ -18,96 +18,6 @@ ul {
   list-style: none;
 }
 
-.container {
-  padding-top: 40px;
-  padding-bottom: 56px;
-  padding-left: 20px;
-  padding-right: 20px;
-  /* width: 320px;
-  height: 100%; */
-  margin: auto;
-}
-
-/* Home page styles */
-
-.cards_wrap {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.card_thumb {
-  position: relative;
-  overflow: hidden;
-}
-
-.card_overlay {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-color: rgba(33, 150, 243, 0.9);
-
-  transform: translateY(100%);
-  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  cursor: pointer;
-}
-
-.card-thumb:hover .flex-overlay {
-  transform: translateY(0);
-}
-
-.card_box {
-  margin-right: 30px;
-  margin-top: 0;
-  margin-bottom: 30px;
-
-  display: block;
-  width: 300px;
-}
-
-.card_box:nth-child(3n) {
-  margin-right: 0;
-}
-
-.card_box:hover {
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-}
-
-.card_poster {
-  display: block;
-  width: 300px;
-  height: 450px;
-  border: none;
-}
-
-.card_content {
-  margin-top: 0;
-  margin-bottom: 0px;
-  padding: 25px 25px;
-
-  background: rgba(235, 231, 234, 0.767);
-
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  border-top: hidden;
-  border: 1px solid transparent;
-}
-
-.card_content .card_title {
-  margin-top: 0;
-  margin-bottom: 4px;
-  color: #000;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
 /* Movie Details Page */
 .card_left {
   text-align: center;
@@ -330,31 +240,6 @@ ul {
   cursor: pointer;
 }
 
-/* AppBar  */
-
-.Searchbar {
-  top: 0;
-  left: 0;
-  position: sticky;
-  z-index: 1100;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  min-height: 64px;
-  padding-right: 24px;
-  padding-left: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-}
-
-/* SearchBar */
-
 .search_form {
   margin-top: 15px;
   display: flex;
@@ -409,18 +294,8 @@ ul {
 
 /* SCREEN MOBILE________________________________ */
 @media screen and (min-width: 320px) {
-  .Searchbar {
-    min-width: 320px;
-  }
-
   .search_form {
     width: auto;
-  }
-
-  .container {
-    width: 320px;
-    padding-left: 20px;
-    padding-right: 20px;
   }
 
   .card_left {
@@ -439,26 +314,8 @@ ul {
 
 /* SCREEN TABLET */
 @media screen and (min-width: 760px) {
-  .cards_wrap {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: -10px;
-  }
-  .Searchbar {
-    min-width: 760px;
-  }
-
   .search_form {
     width: auto;
-  }
-
-  .container {
-    width: 760px;
-    padding-left: 20px;
-    padding-right: 20px;
   }
 
   .card_left {
@@ -472,16 +329,6 @@ ul {
 
 /* SCREEN TABLET */
 @media screen and (min-width: 1024px) {
-  .Searchbar {
-    min-width: 1024px;
-  }
-
-  .container {
-    width: 1024px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
   .card_left {
     width: 40%;
   }

@@ -1,0 +1,148 @@
+html {
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  min-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Home page styles */
+
+/* SCREEN MOBILE________________________________ */
+@media screen and (min-width: 320px) {
+  .container {
+    width: 320px;
+
+    padding-top: 40px;
+    padding-bottom: 56px;
+    margin: auto;
+  }
+
+  .cards_wrap {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .card_box {
+    margin-right: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    display: block;
+    width: 300px;
+  }
+
+  .card_thumb {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card_overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--overlay-color);
+
+    transform: translateY(100%);
+    transition: transform var(--time) var(--timing-function);
+
+    cursor: pointer;
+  }
+
+  .card_thumb:hover .card_overlay {
+    transform: translateY(0);
+  }
+
+  .card_box:hover {
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  }
+
+  .card_poster {
+    display: block;
+    width: 300px;
+    border: none;
+  }
+
+  .card_content {
+    margin-top: 0;
+    margin-bottom: 0px;
+    padding: 20px 20px;
+
+    background: rgba(235, 231, 234, 0.767);
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-top: hidden;
+    border: 1px solid transparent;
+  }
+
+  .card_content .card_title {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #000;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+}
+
+/* SCREEN TABLET */
+@media screen and (min-width: 760px) {
+  .cards_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: -10px;
+  }
+
+  .container {
+    min-width: 760px;
+  }
+
+  .card_box {
+    margin-right: 30px;
+    margin-top: 0;
+    margin-bottom: 30px;
+
+    display: block;
+    width: 300px;
+  }
+}
+
+/* SCREEN DESKCTOP */
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 1024px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .card_box:nth-child(3n) {
+    margin-right: 0;
+  }
+
+  .card_box:nth-last-child(-n + 3) {
+    margin-bottom: 0;
+  }
+}

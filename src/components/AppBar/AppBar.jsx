@@ -1,6 +1,6 @@
 import Navigation from '../Navigation/Navigation';
 import ThemeSwither from '../ThemeSwither/ThemeSwither';
-import styles from '../../css/styles.module.css';
+import styles from './app.module.css';
 
 export default function Appbar() {
   return (

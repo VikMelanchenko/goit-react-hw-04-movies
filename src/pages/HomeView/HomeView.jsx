@@ -4,7 +4,7 @@ import FetchMovieRequest from '../../components/FetchMovieRequest/FetchMovieRequ
 import Spinner from '../../components/Loader/Loader';
 import { Link, useRouteMatch, useLocation } from 'react-router-dom';
 
-import styles from '../../css/styles.module.css';
+import styles from './homeView.module.css';
 
 import defaultImg from '../../images/defaul_img.png';
 
