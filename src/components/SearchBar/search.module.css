@@ -11,12 +11,10 @@ body {
 /* SCREEN MOBILE________________________________ */
 @media screen and (min-width: 320px) {
   .search_form {
-    min-width: 320px;
-
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    width: 320px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: auto;
   }
 
   .search_form_button {
@@ -47,7 +45,7 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
 
-    width: 300px;
+    width: 76%;
     border: none;
     border-bottom: 1px solid #000000;
 

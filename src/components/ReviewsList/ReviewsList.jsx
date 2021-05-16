@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import styles from '../../css/styles.module.css';
+import styles from './review.module.css';
 
 export default function ReviewsList({ reviews }) {
   return (
@@ -7,7 +7,7 @@ export default function ReviewsList({ reviews }) {
       {reviews && (
         <>
           {reviews.length > 0 ? (
-            <ul className={styles.card_right_description}>
+            <ul className={styles.card_description}>
               {reviews.map((review) => (
                 <li key={review.id}>
                   <h3>Author: {review.author}</h3>

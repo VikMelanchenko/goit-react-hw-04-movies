@@ -1,30 +1,41 @@
 import PropTypes from 'prop-types';
 import defaultImg from '../../images/defaul_img.png';
 
-import styles from '../../css/styles.module.css';
+import styles from './cast.module.css';
 
 export default function Cast({ characters }) {
   return (
     <>
-      {characters && (
-        <ul className={styles.cards_wrap}>
-          {characters.map((character) => (
-            <li key={character.id} className={styles.card_box_item}>
-              <img
-                src={
-                  character.profile_path
-                    ? `https://image.tmdb.org/t/p/w500/${character.profile_path}`
-                    : defaultImg
-                }
-                alt={character.original_name}
-                width={185}
-              />
-              <h3>{character.name}</h3>
-              <p>Character: {character.character}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div>
+        {characters && (
+          <ul className={styles.cards_wrap}>
+            {characters.map((character) => (
+              <li key={character.id} className={styles.card_box}>
+                <div className={styles.card_thumb}>
+                  <img
+                    src={
+                      character.profile_path
+                        ? `https://image.tmdb.org/t/p/w500/${character.profile_path}`
+                        : defaultImg
+                    }
+                    alt={character.original_name}
+                    // width={185}
+                  />
+                  <div className={styles.card_overlay}>
+                    <p></p>
+                  </div>
+                </div>
+                <div className={styles.card_content}>
+                  <h3>{character.name}</h3>
+                  <p>
+                    <b>Character</b>: {character.character}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </>
   );
 }
