@@ -40,3 +40,17 @@ h3 {
   line-height: 16px;
   margin-top: 10px;
 }
+
+/* SCREEN TABLET */
+@media screen and (min-width: 760px) {
+  .container {
+    width: 760px;
+  }
+  .card_description h3 {
+    font-size: 18px;
+  }
+
+  .card_description p {
+    font-size: 12px;
+  }
+}

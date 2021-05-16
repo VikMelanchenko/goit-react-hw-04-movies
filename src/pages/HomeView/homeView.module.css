@@ -1,5 +1,14 @@
 /* Home page styles */
 
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 ul {
   padding: 0;
   margin: 0;
@@ -14,16 +23,8 @@ ul {
     margin: auto;
   }
 
-  /* .cards_wrap {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-  } */
-
   .card_box {
-    margin-top: 10px;
+    margin-top: 30px;
   }
 
   .card_thumb {
@@ -88,26 +89,31 @@ ul {
 
 /* SCREEN TABLET */
 @media screen and (min-width: 760px) {
+  .container {
+    width: 760px;
+  }
+
   .cards_wrap {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
     align-items: center;
     text-align: center;
     justify-content: center;
   }
 
-  .container {
-    min-width: 760px;
+  /* .card_box:nth-child(2n) {
+    margin-right: 0;
   }
+
+  .card_box:nth-last-child(-n + 2) {
+    margin-bottom: 0;
+  } */
 
   .card_box {
     margin-right: 30px;
-    margin-top: 0;
-    margin-bottom: 30px;
 
     display: block;
-    width: 300px;
+    width: 45%;
   }
 }
 
@@ -115,6 +121,10 @@ ul {
 @media screen and (min-width: 1024px) {
   .container {
     width: 1024px;
+  }
+
+  .card_box {
+    width: 31%;
   }
 
   .card_box:nth-child(3n) {

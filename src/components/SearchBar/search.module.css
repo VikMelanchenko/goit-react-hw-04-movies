@@ -66,6 +66,10 @@ body {
 /* SCREEN TABLET________________________________ */
 @media screen and (min-width: 760px) {
   .search_form {
-    min-width: 760px;
+    width: 760px;
+  }
+
+  .search_form_input {
+    width: 89%;
   }
 }
