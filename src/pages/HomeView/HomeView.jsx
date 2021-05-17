@@ -68,7 +68,19 @@ export default function HomeView() {
                       alt={movie.original_name}
                     />
                     <div className={styles.card_overlay}>
-                      <p></p>
+                      <div className={styles.card_link_content}>
+                        <Link
+                          style={{ textDecoration: 'none' }}
+                          to={{
+                            pathname: `${url}movies/${movie.id}`,
+                            state: {
+                              from: { location, label: 'back to home-page' },
+                            },
+                          }}
+                        >
+                          <h5 className={styles.card_title}>{movie.title}</h5>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                   <div className={styles.card_content}>

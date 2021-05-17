@@ -84,6 +84,14 @@ li {
     justify-content: center;
   }
 
+  .card_box img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: none;
+    float: left;
+  }
+
   .card_box:nth-child(3n) {
     margin-right: 0;
   }

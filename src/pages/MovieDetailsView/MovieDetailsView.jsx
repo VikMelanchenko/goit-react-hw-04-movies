@@ -44,40 +44,47 @@ export default function MovieDetailsView() {
   return (
     <>
       {/* <hr /> */}
-
       <div className={styles.container}>
         <button type="button" onClick={onGoBack} className={styles.button_back}>
           Go Back
         </button>
+      </div>
+
+      <div className={styles.container}>
         {movie && (
           <>
             <ul>
               {movie.poster_path && (
                 <li className={styles.card_item}>
-                  <img
-                    src={
-                      movie.poster_path
-                        ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                        : defaultImg
-                    }
-                    alt={movie.original_title}
-                    className={styles.card_img}
-                  />
+                  <div className={styles.card_left}>
+                    <img
+                      src={
+                        movie.poster_path
+                          ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                          : defaultImg
+                      }
+                      alt={movie.original_title}
+                      className={styles.card_img}
+                    />
+                  </div>
 
-                  <h2>{movie.title}</h2>
-                  <h3>
-                    <b>User Score: </b> <span>{movie.vote_average * 10}%</span>
-                  </h3>
-                  <h3>Overview</h3>
-                  <p>{movie.overview}</p>
-                  <h3>Genres</h3>
-                  {movie.genres && (
-                    <ul className={styles.gender_list}>
-                      {movie.genres.map((genre) => (
-                        <li key={genre.id}>{genre.name}</li>
-                      ))}
-                    </ul>
-                  )}
+                  <div className={styles.card_right}>
+                    <h2>{movie.title}</h2>
+                    <h3>
+                      <b>User Score: </b>{' '}
+                      <span>{movie.vote_average * 10}%</span>
+                    </h3>
+                    <h3>Overview</h3>
+                    <p>{movie.overview}</p>
+                    <h3>Genres</h3>
+                    {movie.genres && (
+                      <ul className={styles.gender_list}>
+                        {movie.genres.map((genre) => (
+                          <li key={genre.id}>{genre.name}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 </li>
               )}
 

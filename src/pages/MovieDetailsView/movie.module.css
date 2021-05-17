@@ -11,7 +11,7 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
-  /* min-width: 100%; */
+  min-width: 100%;
 }
 
 ul {
@@ -86,19 +86,14 @@ ul {
   .container {
     width: 760px;
 
-    display: block;
+    display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
   }
 
-  .card_img {
-    width: 50%;
-    height: 50%;
-  }
-
   .card_item {
-    text-align: center;
+    text-align: left;
     justify-content: center;
     align-items: center;
 
@@ -107,14 +102,32 @@ ul {
   }
 
   .card_item h2 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
 
     text-transform: uppercase;
   }
 
   .card_item h3 {
-    font-size: 16px;
+    font-size: 14px;
+  }
+
+  .card_left {
+    width: 40%;
+    float: left;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .card_left .card_img {
+    width: 60%;
+    height: 60%;
+  }
+
+  .card_right {
+    width: 60%;
+    float: left;
+    margin-bottom: 45px;
   }
 }
 
@@ -130,6 +143,24 @@ ul {
   }
   .card_item h3 {
     font-size: 18px;
+  }
+
+  .card_left {
+    width: 40%;
+    float: left;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .card_left .card_img {
+    width: 70%;
+    height: 70%;
+  }
+
+  .card_right {
+    width: 60%;
+    float: left;
+    margin-bottom: 160px;
   }
 }
 

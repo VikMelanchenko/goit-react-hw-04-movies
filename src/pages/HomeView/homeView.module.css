@@ -85,6 +85,34 @@ ul {
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
+
+  .card_link_content {
+    margin-top: 0;
+    margin-bottom: 0px;
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-top: hidden;
+    border: 1px solid black;
+  }
+
+  .card_link_content .card_title {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    padding-top: 80%;
+    padding-bottom: 90%;
+
+    background: rgba(163, 161, 163, 0.692);
+
+    color: #000;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 2;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
 }
 
 /* SCREEN TABLET */

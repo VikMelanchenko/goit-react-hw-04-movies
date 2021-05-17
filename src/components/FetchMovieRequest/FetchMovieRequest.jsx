@@ -80,7 +80,21 @@ export default function FetchMovieRequest({ query }) {
                       }
                       alt={movie.original_name}
                     />
-                    <div className={styles.card_overlay}></div>
+                    <div className={styles.card_overlay}>
+                      <div className={styles.card_link_content}>
+                        <Link
+                          style={{ textDecoration: 'none' }}
+                          to={{
+                            pathname: `${url}/${movie.id}`,
+                            state: {
+                              from: { location },
+                            },
+                          }}
+                        >
+                          <h5 className={styles.card_title}>{movie.title}</h5>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                   <div className={styles.card_content}>
                     <Link
